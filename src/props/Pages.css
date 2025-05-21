@@ -1,0 +1,167 @@
+/* Home Component Styles (Pages.css) */
+
+/* General container and spacing */
+.container.mt-4 {
+  margin-top: 2rem;
+}
+
+/* Carousel Styles */
+#carouselExampleIndicators {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-inner {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.carousel-item {
+  height: 500px;
+}
+
+.carousel-image {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 5%;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  opacity: 0.9;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 1rem;
+}
+
+
+.carousel-indicators {
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel-indicators button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  margin: 0 8px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-indicators button.active {
+  background-color: #ff683f;
+}
+
+
+/* Text Content Styles */
+.text-center.mt-4 {
+  margin-top: 3rem;
+  color: #282c3f;
+}
+
+.text-center h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ff683f;
+  margin-bottom: 1.5rem;
+}
+
+.text-center p {
+  font-size: 1.1rem;
+  color: #7e808c;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Social Icons Styles */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.social-icons a {
+  color: #282c3f;
+  font-size: 3rem;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff683f;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .carousel-item {
+    height: 450px;
+  }
+
+  .text-center h2 {
+    font-size: 2rem;
+  }
+
+  .text-center p {
+    font-size: 1rem;
+  }
+
+  .social-icons a{
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-item {
+    height: 350px;
+  }
+
+  .text-center h2 {
+    font-size: 1.75rem;
+  }
+
+  .text-center p {
+    font-size: 0.9rem;
+  }
+
+  .social-icons a {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .carousel-item {
+    height: 250px;
+  }
+
+  .text-center h2 {
+    font-size: 1.5rem;
+  }
+
+  .text-center p {
+    font-size: 0.85rem;
+  }
+
+  .social-icons {
+    gap: 1.5rem;
+  }
+}
