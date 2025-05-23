@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
-import Login from './Login';
+import './Signup.css'; 
 
 const Signup = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
@@ -22,18 +23,33 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <form onSubmit={signup}>
-        <h2>Signup</h2>
-        <input placeholder="Email" type="email" onChange={(e) => setEmail(e.target.value)} required />
-        <input placeholder="Password" type="password" onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Signup</button>
+    <div className="signup-minimalist-wrapper">
+      <form onSubmit={signup} className="signup-minimalist-form">
+        <h2>Sign up</h2>
+        <input
+          type="text"
+          placeholder="Full Name"
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit">Create Account</button>
         <p>
-          Already have an account?{' '}
-          <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login">Login</Link>
         </p>
       </form>
-    </>
+    </div>
   );
 };
 

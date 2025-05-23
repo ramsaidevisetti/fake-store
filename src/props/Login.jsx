@@ -61,7 +61,7 @@ const Login = () => {
     if (valid) {
       const data = { mail, password };
       localStorage.setItem("logindetails", JSON.stringify(data));
-      navigate("/btechwala");
+      navigate("/home");
     } else {
       toast.error("Please fill in the details");
       return;
