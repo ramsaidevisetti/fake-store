@@ -20,7 +20,6 @@ const Cart = () => {
 
   return (
     <>
-    {<Navbar />}
     <div className="cart-container">
       <h2 className="cart-title">🛒 Your Cart</h2>
       {cart.length === 0 ? (

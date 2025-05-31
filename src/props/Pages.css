@@ -1,120 +1,152 @@
 /* Home Component Styles (Pages.css) */
 
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  font-family: 'Assistant', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
 /* General container and spacing */
 .container.mt-4 {
   margin-top: 2rem;
 }
 
-/* Carousel Styles */
-#carouselExampleIndicators {
-  border-radius: 10px;
+/* Carousel Styling */
+.carousel {
+  margin-bottom: 3rem;
+  border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.carousel-inner {
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.carousel-item {
-  height: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .carousel-image {
-  height: 100%;
+  height: 400px;
   object-fit: cover;
-  width: 100%;
 }
 
 .carousel-control-prev,
 .carousel-control-next {
   width: 5%;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  opacity: 0;
+  transition: opacity 0.3s;
 }
 
-.carousel-control-prev:hover,
-.carousel-control-next:hover {
-  opacity: 0.9;
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+  opacity: 1;
 }
 
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
+.carousel-control-prev i,
+.carousel-control-next i {
+  background: rgba(255, 255, 255, 0.9);
   padding: 1rem;
+  border-radius: 50%;
+  color: #3e4152;
+  font-size: 1.2rem;
 }
-
 
 .carousel-indicators {
-  bottom: 20px;
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  margin-bottom: 1rem;
 }
 
 .carousel-indicators button {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.3);
-  margin: 0 8px;
-  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.5);
   border: none;
-  transition: background-color 0.3s ease;
+  margin: 0 5px;
 }
 
 .carousel-indicators button.active {
-  background-color: #ff683f;
+  background-color: white;
 }
 
-
-/* Text Content Styles */
-.text-center.mt-4 {
-  margin-top: 3rem;
-  color: #282c3f;
+/* Welcome Section */
+.text-center {
+  text-align: center;
+  padding: 2rem 0;
 }
 
 .text-center h2 {
+  color: #3e4152;
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ff683f;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .text-center p {
+  color: #94969f;
   font-size: 1.1rem;
-  color: #7e808c;
-  line-height: 1.7;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Social Icons Styles */
+/* Social Icons */
 .social-icons {
   display: flex;
   justify-content: center;
   gap: 2rem;
   margin-top: 3rem;
+  padding-bottom: 3rem;
 }
 
 .social-icons a {
-  color: #282c3f;
-  font-size: 3rem;
-  transition: color 0.3s ease;
+  color: #3e4152;
+  font-size: 1.5rem;
+  transition: color 0.2s;
 }
 
 .social-icons a:hover {
-  color: #ff683f;
+  color: #ff3f6c;
 }
 
-/* Responsive Adjustments */
-@media (max-width: 992px) {
-  .carousel-item {
-    height: 450px;
+/* Featured Categories */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+.category-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.category-content {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.category-content h3 {
+  color: #3e4152;
+  margin-bottom: 0.5rem;
+}
+
+.category-content p {
+  color: #94969f;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .carousel-image {
+    height: 300px;
   }
 
   .text-center h2 {
@@ -123,45 +155,35 @@
 
   .text-center p {
     font-size: 1rem;
+    padding: 0 1rem;
   }
 
-  .social-icons a{
-    font-size: 2.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .carousel-item {
-    height: 350px;
+  .social-icons {
+    gap: 1.5rem;
   }
 
-  .text-center h2 {
-    font-size: 1.75rem;
-  }
-
-  .text-center p {
-    font-size: 0.9rem;
-  }
-
-  .social-icons a {
-    font-size: 2rem;
+  .categories {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
   }
 }
 
-@media (max-width: 576px) {
-  .carousel-item {
-    height: 250px;
+@media (max-width: 480px) {
+  .carousel-image {
+    height: 200px;
   }
 
   .text-center h2 {
     font-size: 1.5rem;
   }
 
-  .text-center p {
-    font-size: 0.85rem;
+  .social-icons {
+    gap: 1rem;
   }
 
-  .social-icons {
-    gap: 1.5rem;
+  .categories {
+    grid-template-columns: 1fr;
+    padding: 1.5rem 0;
   }
 }

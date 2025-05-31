@@ -17,15 +17,40 @@ const Btechwala = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://fakestoreapi.com/products');
+        const token = localStorage.getItem('token');
+        if (!token) {
+          navigate('/login');
+          return;
+        }
+
+        const response = await fetch('https://store-backend-y5ns.onrender.com', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
         const result = await response.json();
-        setData(result);
+        if (response.ok && result.success && Array.isArray(result.data)) {
+          setData(result.data);
+        } else {
+          console.error("Invalid data format received:", result);
+          setData([]);
+          if (response.status === 401) {
+            // Token expired or invalid
+            localStorage.removeItem('token');
+            navigate('/login');
+          }
+        }
       } catch (error) {
+        console.error("Failed to fetch products:", error);
         alert("Failed to fetch products.");
+        setData([]);
       }
     };
     fetchData();
-  }, []);
+  }, [navigate]);
 
   const handleAddToCart = (item) => {
     const updatedCart = [...cart, item];
@@ -37,13 +62,13 @@ const Btechwala = () => {
     setInputvalue(e.target.value);
   };
 
-  const filteredData = data.filter(item =>
+  // Only filter if data is an array
+  const filteredData = Array.isArray(data) ? data.filter(item =>
     item.title.toLowerCase().includes(inputvalue.toLowerCase())
-  );
+  ) : [];
 
   return (
     <>
-    <Navbar/>
     <div className='main'>
       <header>
         <h1>BtechWala Store</h1>
@@ -61,7 +86,7 @@ const Btechwala = () => {
       <div className='product-grid'>
         {filteredData.length > 0 ? (
           filteredData.map((item) => (
-            <div className='itemcard' key={item.id}>
+            <div className='itemcard' key={item._id}>
               <img src={item.image} alt={item.title} />
               <p>{item.title}</p>
               <p>{item.description.slice(0, 100)}...</p>

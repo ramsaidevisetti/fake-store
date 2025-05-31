@@ -1,0 +1,19 @@
+.add-product-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.add-product-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.add-product-form input,
+.add-product-form button {
+  padding: 10px;
+  font-size: 1rem;
+}

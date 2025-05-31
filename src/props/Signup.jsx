@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../firebase';
-import './Signup.css'; 
+import './Signup.css';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -12,13 +10,29 @@ const Signup = () => {
 
   const signup = async (e) => {
     e.preventDefault();
+
     try {
-      const usercred = await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(usercred.user, { displayName: name });
-      alert('Signup successful!');
-      navigate('/login');
+      const response = await fetch('http://localhost:4000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ name, email, password }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // Store the token and email
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('email', email.toLowerCase());
+        alert('Signup successful!');
+        navigate('/home'); // Redirect to home instead of login
+      } else {
+        alert('Signup failed: ' + (data.message || 'Unknown error'));
+      }
     } catch (err) {
-      alert(err.message);
+      alert('Signup error: ' + err.message);
     }
   };
 
@@ -29,18 +43,21 @@ const Signup = () => {
         <input
           type="text"
           placeholder="Full Name"
+          value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
         <input
           type="email"
           placeholder="Email"
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <input
           type="password"
           placeholder="Password"
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
