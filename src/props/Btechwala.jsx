@@ -23,13 +23,14 @@ const Btechwala = () => {
           return;
         }
 
-        const response = await fetch('https://store-backend-y5ns.onrender.com', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
+       const response = await fetch('https://store-backend-y5ns.onrender.com/data/Fakedata', {
+  method: 'GET',
+  headers: {
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  }
+});
+
 
         const result = await response.json();
         if (response.ok && result.success && Array.isArray(result.data)) {
